@@ -1,0 +1,4 @@
+interface:
+  display_name: "Grill to Spec"
+  short_description: "Confirm requirements, scope and acceptance criteria"
+  default_prompt: "Use $grill-to-spec for the relevant stage of this development task."

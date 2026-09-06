@@ -1,0 +1,4 @@
+interface:
+  display_name: "Verify"
+  short_description: "Review changes and verify meaningful evidence"
+  default_prompt: "Use $verify for the relevant stage of this development task."

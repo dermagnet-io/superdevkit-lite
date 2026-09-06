@@ -1,0 +1,11 @@
+{
+  "name": "superdevkit-lite",
+  "version": "1.0.0",
+  "private": true,
+  "description": "通用开发技能插件：需求确认、拆票、代码验证、体验验收与交付。",
+  "type": "module",
+  "scripts": { "build": "node packaging/build.mjs", "test": "node --test" },
+  "engines": { "node": ">=18" },
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/dermagnet-io/superdevkit-lite.git" }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "superdevkit-lite",
+  "version": "1.0.0",
+  "description": "通用开发技能插件：需求确认、拆票、代码验证、体验验收与交付。",
+  "author": {
+    "name": "dermagnet"
+  },
+  "license": "MIT",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "SuperDevKit Lite",
+    "shortDescription": "通用开发技能插件：需求确认、拆票、代码验证、体验验收与交付。",
+    "longDescription": "六个通用技能：use、grill-to-spec、to-tickets、verify、frontend-check、finalize。",
+    "developerName": "dermagnet",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": "使用 SuperDevKit Lite 的 use 技能处理当前开发任务。"
+  }
+}

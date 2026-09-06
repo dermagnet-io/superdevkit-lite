@@ -1,0 +1,4 @@
+interface:
+  display_name: "Finalize"
+  short_description: "Deliver verified changes with accurate status"
+  default_prompt: "Use $finalize for the relevant stage of this development task."
