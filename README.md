@@ -2,13 +2,14 @@
 
 通用开发技能插件：确认需求、拆票实施、验证代码、验收体验、完成交付。
 
-Lite 从 [SuperDevKit](https://github.com/dermagnet-io/superdevkit) 精简而来，提供一个统一入口和五个核心技能。项目约定负责回答“在这里怎么做”，技能负责明确“怎样才算做好”。同一份技能源打包供 Codex 和 Claude Code 使用。
+Lite 从 [SuperDevKit](https://github.com/dermagnet-io/superdevkit) 精简而来，提供一个统一入口和六个核心技能。项目约定负责回答“在这里怎么做”，技能负责明确“怎样才算做好”。同一份技能源打包供 Codex 和 Claude Code 使用。
 
-## 六个技能
+## 七个技能
 
 | 技能 | 何时使用 | 产出 |
 |---|---|---|
 | [use](skills/use/SKILL.md) | 使用 Lite 处理任务 | 按需进入适用技能 |
+| [start](skills/start/SKILL.md) | 首次实现、切换范围或上下文变化 | 核对任务、分支、工作区及运行环境，决定复用或隔离 |
 | [grill-to-spec](skills/grill-to-spec/SKILL.md) | 新需求或重要行为仍有待确认 | 明确来源的需求、范围、约束与验收条件 |
 | [to-tickets](skills/to-tickets/SKILL.md) | 需求确认后登记和拆分工作 | 可实施的票、依赖关系和逐票实施顺序 |
 | [verify](skills/verify/SKILL.md) | 评审代码或验证实现结果 | 需求与规范检查、风险发现和验证证据 |
@@ -23,7 +24,7 @@ Lite 从 [SuperDevKit](https://github.com/dermagnet-io/superdevkit) 精简而来
 
 [dermagnet-io/superdevkit-lite](https://github.com/dermagnet-io/superdevkit-lite)
 
-然后安装 `superdevkit-lite`。仓库提供 `.agents/plugins/marketplace.json` 与 `.claude-plugin/marketplace.json`，分别指向预构建的 Codex 与 Claude Code 插件。使用者无需先运行构建脚本；安装或更新后，在新会话中确认六个技能已出现。
+然后安装 `superdevkit-lite`。仓库提供 `.agents/plugins/marketplace.json` 与 `.claude-plugin/marketplace.json`，分别指向预构建的 Codex 与 Claude Code 插件。使用者无需先运行构建脚本；安装或更新后，在新会话中确认七个技能已出现。1.1.0 新增 start；仅修改源码或完成构建不代表已发布或当前会话已加载新技能。
 
 技能可通过 harness 的原生调用方式使用；Claude Code 的命名空间示例为 `/superdevkit-lite:grill-to-spec`。Codex 可直接请求使用 `superdevkit-lite` 的 `grill-to-spec` 技能，具体调用入口以当前安装后的技能列表为准。
 
@@ -35,6 +36,7 @@ Lite 从 [SuperDevKit](https://github.com/dermagnet-io/superdevkit) 精简而来
 
 ```markdown
 ## 开发路由
+- 实现前使用 superdevkit-lite 的 start；同一任务继续时只复核变化的上下文。
 - 新需求存在重要歧义时使用 superdevkit-lite 的 grill-to-spec；已确认需求直接沿用。
 - 需求确认后使用 to-tickets 登记工作，按依赖顺序逐票实施。
 - 代码实现后使用 verify；前端体验受影响时追加 frontend-check。
@@ -42,15 +44,18 @@ Lite 从 [SuperDevKit](https://github.com/dermagnet-io/superdevkit) 精简而来
 
 ## 项目约定
 指向实际的需求记录、工作登记位置、架构与修改范围约束。
+说明默认基线、分支命名、工作区隔离与复用规则；没有要求的项目不强加外部 tracker。
 列出验证命令及其适用范围，体验验收环境与设计规范。
-说明交付终点、外部操作授权边界及责任归属。
+说明交付终点、票据关闭条件、外部操作授权边界、环境保留与清理约束。
 ```
 
 只引用当前任务需要的项目文档，不把完整项目资料或技能正文复制进治理入口。本仓库的 [AGENTS.md](AGENTS.md) **只用于开发 Lite 插件本身**，不会打包进消费项目。
 
+Lite 提供执行约定，不附带自动分支检查、CI 或停止门禁；宿主能力以实际可用工具为准。项目可另接可执行检查，但不能把技能被引用或声明字段存在当作已经执行。默认不要求多代理或固定角色。
+
 ## 从完整版迁移
 
-Lite 是独立插件，名称为 `superdevkit-lite`，版本从 `1.0.0` 开始。采用 Lite 时，将消费项目的路由改为以上六个技能，避免同时路由到两个包的同名技能。
+Lite 是独立插件，名称为 `superdevkit-lite`，版本从 `1.0.0` 开始。采用 Lite 时，将消费项目的路由改为以上七个技能，避免同时路由到两个包的同名技能。尚未升级时明确缺少的技能；不要把未安装的 start 声称为已启用。
 
 Lite 不包含旧版的 `dev`、`plan`、`execute`、`tdd`、`debugging`、`enter-worktree`、`init`、`setup`、`board`、`dispatch`、`handoff`，也不包含绑定接口、角色模板、停止钩子、看板服务或安装包装 CLI。旧项目若引用这些入口，需要先调整自身约定；Lite 不会自动改写项目文件或卸载完整版。
 

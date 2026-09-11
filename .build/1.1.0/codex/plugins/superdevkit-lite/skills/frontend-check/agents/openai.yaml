@@ -1,0 +1,4 @@
+interface:
+  display_name: "Frontend Check"
+  short_description: "Validate affected frontend flows and usability"
+  default_prompt: "Use $frontend-check for the relevant stage of this development task."

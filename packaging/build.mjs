@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const NAME = 'superdevkit-lite';
-export const SKILLS = ['finalize', 'frontend-check', 'grill-to-spec', 'to-tickets', 'use', 'verify'];
+export const SKILLS = ['finalize', 'frontend-check', 'grill-to-spec', 'start', 'to-tickets', 'use', 'verify'];
 const json = async (file) => JSON.parse(await readFile(file, 'utf8'));
 
 async function assertPlainTree(directory) {

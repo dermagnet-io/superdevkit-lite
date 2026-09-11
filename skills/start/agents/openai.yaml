@@ -1,0 +1,4 @@
+interface:
+  display_name: "Start"
+  short_description: "Check task, workspace and environment before changes"
+  default_prompt: "Use $start to verify the task and workspace before implementation."

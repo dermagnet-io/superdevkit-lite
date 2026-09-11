@@ -1,6 +1,6 @@
 {
   "name": "superdevkit-lite",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "通用开发技能插件：需求确认、拆票、代码验证、体验验收与交付。",
   "type": "module",
