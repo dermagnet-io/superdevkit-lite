@@ -7,7 +7,7 @@
     {
       "name": "superdevkit-lite",
       "description": "通用开发技能插件：需求确认、拆票、代码验证、体验验收与交付。",
-      "source": "./.build/1.0.0/claude-code/plugins/superdevkit-lite"
+      "source": "./.build/1.1.0/claude-code/plugins/superdevkit-lite"
     }
   ]
 }

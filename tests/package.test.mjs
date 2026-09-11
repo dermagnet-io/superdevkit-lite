@@ -112,3 +112,13 @@ test('skill metadata and local Markdown links resolve', async () => {
     }
   }
 });
+
+test('missing startup skill fails without replacing an existing package', async t => {
+  const root = await fixture(t);
+  const [target] = await build({ root });
+  const marker = path.join(target, 'keep.txt');
+  await writeFile(marker, 'preserve');
+  await rm(path.join(root, 'skills', 'start'), { recursive: true });
+  await assert.rejects(build({ root }), /Unexpected skill inventory/);
+  assert.equal(await readFile(marker, 'utf8'), 'preserve');
+});
