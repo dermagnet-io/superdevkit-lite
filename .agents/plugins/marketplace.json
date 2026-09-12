@@ -8,7 +8,7 @@
       "name": "superdevkit-lite",
       "source": {
         "source": "local",
-        "path": "./.build/1.1.0/codex/plugins/superdevkit-lite"
+        "path": "./.build/1.2.0/codex/plugins/superdevkit-lite"
       },
       "policy": {
         "installation": "AVAILABLE",
