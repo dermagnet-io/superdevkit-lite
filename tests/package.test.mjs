@@ -101,7 +101,8 @@ test('skill metadata and local Markdown links resolve', async () => {
     const text = await readFile(file, 'utf8');
     assert.match(text, new RegExp(`^---\\nname: ${name}\\ndescription: [^\\n]+\\n---\\n`));
   }
-  for (const relative of ['README.md', ...SKILLS.map(name => `skills/${name}/SKILL.md`)]) {
+  const skillMarkdown = (await files(path.join(ROOT, 'skills'))).filter(file => file.endsWith('.md')).map(file => `skills/${file}`);
+  for (const relative of ['README.md', ...skillMarkdown]) {
     const file = path.join(ROOT, relative);
     for (const match of (await readFile(file, 'utf8')).matchAll(/\]\(([^)]+)\)/g)) {
       const link = match[1];

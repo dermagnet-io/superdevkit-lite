@@ -1,0 +1,4 @@
+interface:
+  display_name: "Setup"
+  short_description: "Organize governance docs while preserving project content"
+  default_prompt: "Use $setup to preserve project content, review document locations and propose organization and additions for approval."

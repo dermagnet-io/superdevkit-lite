@@ -1,0 +1,4 @@
+interface:
+  display_name: "To Tickets"
+  short_description: "Register scope and keep actionable tickets current"
+  default_prompt: "Use $to-tickets for the relevant stage of this development task."
